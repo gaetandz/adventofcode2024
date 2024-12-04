@@ -11,6 +11,7 @@ func main() {
   var leftList []int
   var rightList []int
   total := 0
+  similarity := 0
 
   file, err := os.Open("./data.txt")
   if err != nil {
@@ -78,5 +79,23 @@ func main() {
   }
 
   fmt.Println(total)
+
+  for _, left := range leftList{
+
+    count := 0
+    for _, right := range rightList{
+      if left == right {
+        count += 1
+      }
+    }
+    factorTotal := left * count
+    similarity += factorTotal
+    fmt.Printf("Factor %d is found %d times for a similarity score of: %d",left, count, factorTotal)
+    fmt.Println("")
+    fmt.Printf("Current similarity factor: %d", similarity)
+    fmt.Println("")
+
+  }
+
 
 }
